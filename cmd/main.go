@@ -2,7 +2,12 @@
 
 package main
 
-import "github.com/gofiber/fiber/v2"
+ 
+import (
+    "github.com/siriratn/api_postgres/database"
+	"github.com/gofiber/fiber/v2"
+)
+
 
 func main() {
     database.ConnectDb()
