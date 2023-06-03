@@ -10,14 +10,14 @@ import (
 
 func setupRoutes(app *fiber.App) {
     app.Get("/", handlers.Home)
-	
+
 	app.Post("/fact", handlers.CreateFact)
 }
 
-func setupRoutes(app *fiber.App) {
+/*func setupRoutes(app *fiber.App) {
 
     app.Get("/", func(c *fiber.Ctx) error {
         return c.SendString("Hello, Nidnoi!")
     })
 
-}
+}*/
