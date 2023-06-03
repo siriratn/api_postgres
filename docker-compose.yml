@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+## เพิ่มทีหลัง 
+#configuration, we just need to add the command we want to map to docker compose up. You may notice that it is the same command we use inside the web service container     
+    #command: go run cmd/main.go -b 0.0.0.0
+    command: air ./cmd/main.go -b 0.0.0.0
+
+  db:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
