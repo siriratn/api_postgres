@@ -6,11 +6,14 @@ package main
 import (
     "github.com/siriratn/api_postgres/database"
 	"github.com/gofiber/fiber/v2"
+    "github.com/gofiber/template/html"
 )
 
 
 func main() {
     database.ConnectDb()
+
+    engine := html.New("./views", ".html") 
 
     app := fiber.New()
 
