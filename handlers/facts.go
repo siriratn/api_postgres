@@ -46,7 +46,7 @@ func CreateFact(c *fiber.Ctx) error {
         return NewFactView(c)
     }
     return ListFacts(c)
- 
+
 }
 
 // 1. New Confirmation view
