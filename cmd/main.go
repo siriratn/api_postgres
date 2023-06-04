@@ -14,10 +14,11 @@ func main() {
     database.ConnectDb()
 
     engine := html.New("./views", ".html") 
+ 
     app := fiber.New(fiber.Config{
-        Views: engine, // new config
+        Views: engine,
+        ViewsLayout: "layouts/main", // add this to config
     })
-
 
 
     setupRoutes(app)
