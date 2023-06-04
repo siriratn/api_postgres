@@ -9,7 +9,8 @@
 
     <div class="actions">
         <a href="/fact/{{ .Fact.ID }}/edit" class="btn-secondary">Edit</a>
-        <button class="btn-danger">Delete</button>
+         <!-- Add `id` and `data-factid` attributes to delete button -->
+         <button id="delete-button" data-factid="{{ .Fact.ID }}" class="btn-danger">Delete</button>
     </div>
     {{end}}
 </div>
