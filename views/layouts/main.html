@@ -3,7 +3,8 @@
 <head>
     <title>Noidnoi Around</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="/style/main.css?=1">
+     <!-- Add id to stylesheet link tag -->
+    <link id="styles" rel="stylesheet" href="/style/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -17,4 +18,14 @@
     </div>
 </body>
 </html>
-<script src="/javascript/app.js"></script>
+<!-- Add id to script tag -->
+<script id="main" src="/javascript/app.js"></script>
+
+<!-- For local development only: Snippet to append timestamps -->
+<script>
+    const timeStamp = Date.now()
+    const stylesheetLink = document.querySelector("link#styles")
+    const appScriptLink = document.querySelector("script#main")
+    stylesheetLink.href += `?t=${timeStamp}`
+    appScriptLink.src += `?t=${timeStamp}`
+</script>
