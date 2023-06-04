@@ -11,7 +11,15 @@ import (
 
 
 func Home(c *fiber.Ctx) error {
-    return c.SendString("Helllo Nidnoi:)")
+    return c.SendString("Helllo Nidnoi :)")
+}
+
+
+func ListFacts(c *fiber.Ctx) error {
+    facts := []models.Fact{}
+    database.DB.Db.Find(&facts)
+
+    return c.Status(200).JSON(facts)
 }
 
 func CreateFact(c *fiber.Ctx) error {
