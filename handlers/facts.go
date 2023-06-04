@@ -6,7 +6,6 @@ import (
 	"github.com/siriratn/api_postgres/database"
 	"github.com/siriratn/api_postgres/models"
 
-
 )
 
 
@@ -15,16 +14,24 @@ func Hometest(c *fiber.Ctx) error {
 }
 
 
-func Home(c *fiber.Ctx) error {
+func ListFacts(c *fiber.Ctx) error {
     facts := []models.Fact{}
     database.DB.Db.Find(&facts)
 
     return c.Render("index", fiber.Map{
         "Title": "Many Time",
         "Subtitle": "Facts for funtimes with friends!",
-        "Facts":    facts, // send the facts to the view
+       "Facts":    facts, // send the facts to the view
     })
     
+}
+
+// Create new Fact View handler
+func NewFactView(c *fiber.Ctx) error {
+    return c.Render("new", fiber.Map{
+        "Title":    "New Fact",
+        "Subtitle": "Add a cool fact!",
+    })
 }
 
 func CreateFact(c *fiber.Ctx) error {
