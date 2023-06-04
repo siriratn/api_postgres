@@ -22,6 +22,7 @@ func Home(c *fiber.Ctx) error {
     return c.Render("index", fiber.Map{
         "Title": "Many Time",
         "Subtitle": "Facts for funtimes with friends!",
+        "Facts":    facts, // send the facts to the view
     })
     
 }
