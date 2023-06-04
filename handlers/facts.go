@@ -36,16 +36,17 @@ func NewFactView(c *fiber.Ctx) error {
 
 func CreateFact(c *fiber.Ctx) error {
     fact := new(models.Fact)
+    // Parse request body
     if err := c.BodyParser(fact); err != nil {
-        return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-            "message": err.Error(),
-        })
+        return NewFactView(c)
     }
-
-    database.DB.Db.Create(&fact)
-
-    //return c.Status(200).JSON(fact)
-    return ConfirmationView(c) // 2. Return confirmation view
+    // Create fact in database
+    result := database.DB.Db.Create(&fact)
+    if result.Error != nil {
+        return NewFactView(c)
+    }
+    return ListFacts(c)
+ 
 }
 
 // 1. New Confirmation view
