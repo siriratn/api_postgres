@@ -56,3 +56,15 @@ func ConfirmationView(c *fiber.Ctx) error {
         "Subtitle": "Add more wonderful facts to the list!",
     })
 }
+
+func ShowFact(c *fiber.Ctx) error {
+    fact := models.Fact{}
+    id := c.Params("id")
+
+    database.DB.Db.Where("id = ?", id).First(&fact)
+
+    return c.Render("show", fiber.Map{
+        "Title": "Single Fact",
+        "Fact":  fact,
+    })
+}
