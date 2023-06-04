@@ -14,8 +14,11 @@ func main() {
     database.ConnectDb()
 
     engine := html.New("./views", ".html") 
+    app := fiber.New(fiber.Config{
+        Views: engine, // new config
+    })
 
-    app := fiber.New()
+
 
     setupRoutes(app)
 
