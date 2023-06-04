@@ -3,8 +3,10 @@ package database
 
 import (
     "fmt"
+    "log"
     "os"
-
+    
+    "github.com/siriratn/api_postgres/models"
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
 	"gorm.io/gorm/logger"
