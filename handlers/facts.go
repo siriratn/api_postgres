@@ -70,9 +70,8 @@ func ShowFact(c *fiber.Ctx) error {
         "Title": "Single Fact",
         "Fact":  fact,
     })
-
-
 }
+
 
 func NotFound(c *fiber.Ctx) error {
     return c.Status(fiber.StatusNotFound).SendFile("./public/404.html")
