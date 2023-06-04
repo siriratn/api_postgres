@@ -22,6 +22,8 @@ func main() {
 
 
     setupRoutes(app)
+    
+    app.Static("/", "./public")
 
     // app.Get("/", func(c *fiber.Ctx) error {
     //     return c.SendString("Hello, Nidnoi!")
